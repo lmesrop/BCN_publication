@@ -1,1 +1,34 @@
+#steps to KinFin Analysis 
+
+#create config.txt file 
+
+#copy Orthofinder results into the working directory 
+
+cp Orthogroups.txt /home/lmesrop/wgcna_DE_project_phylogenies/gene_duplication_BCN_phylo_analysis/KinFin_dir/
+
+cp  SequenceIDs.txt /home/lmesrop/wgcna_DE_project_phylogenies/gene_duplication_BCN_phylo_analysis/KinFin_dir/
+
+cp SpeciesIDs.txt /home/lmesrop/wgcna_DE_project_phylogenies/gene_duplication_BCN_phylo_analysis/KinFin_dir/
+
+cp SpeciesTree_rooted.txt /home/lmesrop/wgcna_DE_project_phylogenies/gene_duplication_BCN_phylo_analysis/KinFin_dir/
+
+cp Orthogroups.tsv /home/lmesrop/wgcna_DE_project_phylogenies/gene_duplication_BCN_phylo_analysis/KinFin_dir/
+
+cp Orthogroups_UnassignedGenes.tsv /home/lmesrop/wgcna_DE_project_phylogenies/gene_duplication_BCN_phylo_analysis/KinFin_dir/
+
+awk -F"\t" '$13 != "" { print $1, $13 }' Orthogroups_UnassignedGenes.tsv > Vtsujii_UnassignedGenes.tsv
+
+#prepare Orthogroups.tsv file following Goodheart et al. 2024 
+
+sed 's/\t\t/ /g' Orthogroups.tsv | sed 's/\t/ /g' | sed 's/,//g' | sed 's/^M$//g' | sed -r 's/(OG[0-9][0-9][0-9][0-9][0-9][0-9][0-9])\ +/\1\ /g' > Orthogroups_edited.txt
+
+dos2unix Orthogroups_edited.txt
+
+tail -n +2 Orthogroups_edited.txt > Orthogroups_edited.txt.temp
+
+mv Orthogroups_edited.txt.temp Orthogroups_edited.txt
+
+#run KinFin 
+
+/home/lmesrop/kinfin/kinfin -g Orthogroups_edited.txt -c KinFin_config_v3.txt -s SequenceIDs.txt -p SpeciesIDs.txt -t SpeciesTree_rooted.txt --infer_singletons -o kinfin_results_v3
 
