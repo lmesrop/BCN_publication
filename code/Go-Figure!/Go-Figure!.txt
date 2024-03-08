@@ -1,1 +1,13 @@
 
+#Generated GO enrichment files using TopGO on Jupyter Notebook X. 
+
+#Go-Figure GO enrichment Both Species 
+
+
+# Go-Figure! GO enrichment Skogsbergia sp. 
+python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Skogsbergia_sp_df.tsv -o gofigure_directory_DE_skogsbergia_sp_si0.5 -si 0.5 -m 25 -e 100 -q pdf
+
+
+# Go-Figure! GO enrichment Vargula tsujii 
+python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Vargulatsujii_df.tsv -o gofigure_directory_DE_Vargula_tsujii_si0.5 -si 0.5 -m 50 -e 100 -q pdf
+
