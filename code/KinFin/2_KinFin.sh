@@ -3,7 +3,7 @@
 
 #obtain lists of clade-specific genes
 
-#Adapted from Jessica A. Goodheart 
+#Adapted from Jessica A. Goodheart (Reference Paper)
 
 #Usage: bash post_kinfin.sh [species] [lux] [lum] [ostra] [arthro] 
 
