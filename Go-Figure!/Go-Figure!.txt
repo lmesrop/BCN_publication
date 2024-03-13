@@ -1,13 +1,23 @@
 
-#Generated GO enrichment files using TopGO on Jupyter Notebook X. 
+# Goal: Generate GO-Figure! semantic plots 
 
-#Go-Figure GO enrichment Both Species 
+# Overview: Generate GO semantic plots using outputs from TopGO enrichment analyses performed in Jupyter Notebook.  
+
+### Script 1
+
+Go-Figure! analysis for both species, Vargula tsujii, and Skogsbergia sp. using DE genes (significantly upregulated) for both luminous and non-luminous upper lips. 
 
 
-# Go-Figure! GO enrichment Skogsbergia sp. 
+### Script 2 
+
+Go-Figure! analysis for Skogsbergia sp. using DE genes (significantly upregulated) for non-luminous upper lip. 
+
 python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Skogsbergia_sp_df.tsv -o gofigure_directory_DE_skogsbergia_sp_si0.5 -si 0.5 -m 25 -e 100 -q pdf
 
 
-# Go-Figure! GO enrichment Vargula tsujii 
+### Script 3
+
+Go-Figure! analysis for Vargula tsujii using DE genes (significantly upregulated) for luminous upper lip. 
+
 python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Vargulatsujii_df.tsv -o gofigure_directory_DE_Vargula_tsujii_si0.5 -si 0.5 -m 50 -e 100 -q pdf
 
