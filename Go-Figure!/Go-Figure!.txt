@@ -7,6 +7,7 @@
 
 Go-Figure! analysis for both species, Vargula tsujii, and Skogsbergia sp. using DE genes (significantly upregulated) for both luminous and non-luminous upper lips. 
 
+python /home/lmesrop/programs/GO-Figure/gofigure.py -j standard-plus -i GO_figure_bothspecies_df_subset.tsv -o gofigure_directory_DE_bothspecies_si0.5 -si 0.5 -c user -m 50 -e 100 -q pdf
 
 ### Script 2 
 
@@ -20,4 +21,12 @@ python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Sko
 Go-Figure! analysis for Vargula tsujii using DE genes (significantly upregulated) for luminous upper lip. 
 
 python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Vargulatsujii_df.tsv -o gofigure_directory_DE_Vargula_tsujii_si0.5 -si 0.5 -m 50 -e 100 -q pdf
+
+### Script 4 
+
+GO-Figure! analysis for all co-expressed genes of the BCN (Vargula tsujii). 
+
+python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_BCN_df.tsv -o gofigure_directory_BCN_si0.1 -si 0.1 -m 50 -e 100 -q pdf
+
+
 
