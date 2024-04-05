@@ -1,6 +1,6 @@
-#Title: Downstream analyses of KinFin output for Vargula tsujii 
+#Description: Downstream analyses of KinFin output for Vargula tsujii 
 #Author: Lisa Yeter Mesrop 
-#Description: Determine the distribution of Vargula tsujii-specific genes across different taxonomic origins. 
+#Goal: Determine the distribution of Vargula tsujii-specific genes (orthogroups) across different taxonomic origins. 
 
 #load libraries 
 library(tidyverse) 
