@@ -1,9 +1,8 @@
-
 #!/usr/bin/bash
 
-#obtain lists of clade-specific genes
+#Description: Obtain lists of clade-specific genes
 
-#Adapted from Jessica A. Goodheart (Reference Paper)
+#Author: Adapted from Goodheart et al. (2024) 
 
 #Usage: bash post_kinfin.sh [species] [lux] [lum] [ostra] [arthro] 
 
@@ -112,3 +111,6 @@ for i in "$@"; do
     printf "%s\t%s\t%s\n" "$i" "${prots[a]}" "${all_proteins[a]}" >> kinfin_stats.txt
     ((a+=1))
 done
+
+
+# Reference: Goodheart, Jessica A et al. “A chromosome-level genome for the nudibranch gastropod Berghia stephanieae helps parse clade-specific gene expression in novel and conserved phenotypes.” BMC biology vol. 22,1 9. 17 Jan. 2024, doi:10.1186/s12915-024-01814-3
