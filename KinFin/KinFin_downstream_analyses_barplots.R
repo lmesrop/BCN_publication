@@ -1,6 +1,6 @@
-#Title: Barplots for downstream analyses of KinFin output for Vargula tsujii. 
+#Description: Barplots for downstream analyses of KinFin output for Vargula tsujii. 
 #Author: Lisa Yeter Mesrop 
-#Description: Scripts for barplot figures. 
+#Goal: Scripts for barplot figures. 
 
 #load libraries 
 library(tidyverse) 
