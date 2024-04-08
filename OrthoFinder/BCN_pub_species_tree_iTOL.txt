@@ -1,0 +1,1 @@
+(Trichonephila_antipodiana,(Daphnia_magna,((Darwinula_stevensoni.fasta.transdecoder),((AltLiz.fasta.transdecoder,(Harb_slatteryi.fasta.transdecoder,Euph_microasciformis.fasta.transdecoder)),(Skogsbergia_sp,((V.hilgendorfii.transdecoder,(BothRoCMU.fasta.transdecoder,(Pannecohenae.transdecoder,(JaWLU_S67.fasta.transdecoder,Vargula_tsujii_cdhit_95.fasta.transdecoder))))))))));
