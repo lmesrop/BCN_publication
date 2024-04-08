@@ -7,5 +7,5 @@
 
 cd $SLURM_SUBMIT_DIR
 
-orthofinder -f ~/rerun_orthofinder_v5_11112022 -S diamond -T iqtree -M msa -s ~/110722_species_orthofinder_iTOL.txt  -y
+orthofinder -f ~/BCN_pub_orthofinder -S diamond -T iqtree -M msa -s ~/BCN_pub_species_orthofinder_iTOL.txt  -y
 
