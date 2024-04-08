@@ -63,8 +63,6 @@ ALL_transcripts_with_predictedORFs
 #all expressed DGE transcripts (prefilter min 2 counts in more than 5 biological replicates or more). Imported from Juypter Notebook. 
 ALL_DGE_min2counts <- subset(dds_count_table_organ_level_prefiltered_strict_assay_ids, select = "transript_ids")
 
-
-
 #### function for finding taxonomic restricted genes for each dataset of interest (e.g. significantly upregulated genes and co-expressed genes)
 
 ## first, combine the dataframes from the KinFin output for each taxonomic level (w/o nested proteins)
@@ -124,7 +122,6 @@ matched_sigfig_up_bio_upper_lip_LUX <-matched_transcripts_sigfig_up_bio_upper_li
 matched_sigfig_up_bio_upper_lip_VTSUJII <-matched_transcripts_sigfig_up_bio_upper_lip[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_sigfig_up_bio_upper_lip_ALL_transcripts_with_predictedORFs <-matched_transcripts_sigfig_up_bio_upper_lip[["ALL_transcripts_with_predictedORFs"]]
 
-
 ## sigfig_up_compound_eye dataset 
 
 ## call the function 
@@ -146,7 +143,6 @@ matched_sigfig_up_compound_eye_LUM <- matched_transcripts_sigfig_up_compound_eye
 matched_sigfig_up_compound_eye_LUX <-matched_transcripts_sigfig_up_compound_eye[["lux_only_proteins_removep"]]
 matched_sigfig_up_compound_eye_VTSUJII <-matched_transcripts_sigfig_up_compound_eye[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_sigfig_up_compound_eye_ALL_transcripts_with_predictedORFs <-matched_transcripts_sigfig_up_compound_eye[["ALL_transcripts_with_predictedORFs"]]
-
 
 ## sigfig_up_gut dataset 
 
@@ -170,8 +166,6 @@ matched_sigfig_up_gut_LUX <-matched_transcripts_sigfig_up_gut[["lux_only_protein
 matched_sigfig_up_gut_VTSUJII <-matched_transcripts_sigfig_up_gut[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_sigfig_up_gut_ALL_transcripts_with_predictedORFs <-matched_transcripts_sigfig_up_gut[["ALL_transcripts_with_predictedORFs"]]
 
-
-
 # BCN_module dataset 
 
 ## call the function 
@@ -194,7 +188,6 @@ matched_BCN_module_LUX <-matched_transcripts_BCN_module[["lux_only_proteins_remo
 matched_BCN_module_VTSUJII <-matched_transcripts_BCN_module[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_BCN_module_ALL_transcripts_with_predictedORFs <-matched_transcripts_BCN_module[["ALL_transcripts_with_predictedORFs"]]
 
-
 # gut_module dataset 
 
 ## call the function 
@@ -216,7 +209,6 @@ matched_gut_module_LUM <- matched_transcripts_gut_module[["lum_only_proteins_rem
 matched_gut_module_LUX <-matched_transcripts_gut_module[["lux_only_proteins_removep"]]
 matched_gut_module_VTSUJII <-matched_transcripts_gut_module[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_gut_module_ALL_transcripts_with_predictedORFs <-matched_transcripts_gut_module[["ALL_transcripts_with_predictedORFs"]]
-
 
 # ALL_DGE_min2counts
 
@@ -260,16 +252,13 @@ ggvenn(
   stroke_size = .7, set_name_size = 4.5
 )
 
-
 ##find the genes uniquely upregulated in the bio upper lip and not in the gut
 lightorgan_unique_de  <- sigfig_up_bio_upper_lip$gene[!sigfig_up_bio_upper_lip$gene %in% sigfig_up_gut$gene]
 lightorgan_unique_de_df <- as.data.frame(lightorgan_unique_de)
 nrow(lightorgan_unique_de_df) 
 
-
 #unique_de_lightorgan_annot <- Vtsujii_Trinotate_lym_subset %>% filter(transcript_id %in% lightorgan_unique_de_df$lightorgan_unique_de)
 #write.csv(unique_de_lightorgan_annot, file = "unique_de_lightorgan_annot.csv" )
-
 
 ##find the genes uniquely upregulated in the gut by subtracting from the bio upper lip 
 gut_unique_de_v1 <- sigfig_up_gut$gene[!sigfig_up_gut$gene %in% sigfig_up_bio_upper_lip$gene]
@@ -314,8 +303,6 @@ matched_ALL_gut_unique_de_df_LUX <-matched_transcripts_gut_unique_de_df[["lux_on
 matched_ALL_gut_unique_de_df_VTSUJII <-matched_transcripts_gut_unique_de_df[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_ALL_gut_unique_de_df_ALL_transcripts_with_predictedORFs <-matched_transcripts_gut_unique_de_df[["ALL_transcripts_with_predictedORFs"]]
 
-
-
 ## lightorgan_unique_de_df
 
 ## call the function 
@@ -337,8 +324,6 @@ matched_ALL_lightorgan_unique_de_df_LUM <- matched_transcripts_lightorgan_unique
 matched_ALL_lightorgan_unique_de_df_LUX <-matched_transcripts_lightorgan_unique_de_df[["lux_only_proteins_removep"]]
 matched_ALL_lightorgan_unique_de_df_VTSUJII <-matched_transcripts_lightorgan_unique_de_df[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_ALL_lightorgan_unique_de_df_ALL_transcripts_with_predictedORFs <-matched_transcripts_lightorgan_unique_de_df[["ALL_transcripts_with_predictedORFs"]]
-
-
 
 ## eye_unique_de_df
 
