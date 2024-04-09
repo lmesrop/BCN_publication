@@ -25,8 +25,18 @@ library(DESeq2)
 ## import the cross-species expression matrix 
 vtsujii_skogs_joined_one_to_one_na_omit_df_non_dup
 
-## import meta data df
-meta 
+## make the metasheet df
+meta <- data.frame(row.names = colnames(vtsujii_skogs_joined_one_to_one_na_omit_df_non_dup)) 
+sample_name = c("Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut", "Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut", "Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut", "Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut","Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut","Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut", "Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut", "Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut", "Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut","Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut" )
+meta$sample_name <- sample_name 
+meta$names <- rownames(meta)
+rownames(meta) <- NULL
+species = c("Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii","Vargula_tsujii", "Vargula_tsujii", "Vargula_tsujii",
+                "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp","Skogsbergia_sp", "Skogsbergia_sp", "Skogsbergia_sp" )
+meta$species <- species
+tissue <- c("upper_lip", "compound_eye", "gut", "upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut",
+          "upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut")
+meta$tissue <- tissue 
 
 ##### prep cross-species expression matrix for PCA #####
 
@@ -36,15 +46,6 @@ dds_merged_table_prefiltered <- dds_count_table[rowSums(counts(dds_count_table) 
 nrow(dds_merged_table_prefiltered)
 dds_merged_table_prefiltered_assay <- assay(dds_merged_table_prefiltered)
 
-## change the name meta to filter_table 
-filter_table <- meta 
-
-## add tissue to the filter_table df 
-tissue <- c("upper_lip", "compound_eye", "gut", "upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut",
-            "upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut","upper_lip", "compound_eye", "gut")
-
-filter_table$tissue <- tissue 
-
 ## use DESeq2 to perform log transformation 
  
 vtsujii_skogs_cross_sp_exp_log2 = log2(dds_merged_table_prefiltered_assay + 1e-5) 
@@ -53,11 +54,11 @@ colnames(vtsujii_skogs_cross_sp_exp_log2) = colnames(dds_merged_table_prefiltere
 
 ## remove batch effect with ComBat 
 
-batch = filter_table$species
-vtsujii_skogs_combat = model.matrix(~1, data=filter_table)
+batch = meta$species
+vtsujii_skogs_combat = model.matrix(~1, data=meta)
 vtsujii_skogs_combat_batch_rm = ComBat(dat=vtsujii_skogs_cross_sp_exp_log2, batch=batch, mod=vtsujii_skogs_combat,mean.only = F,
                       par.prior=TRUE,  prior.plots=FALSE)
-vtsujii_skogs_combat_batch_rm_Summ_Exp <- SummarizedExperiment(vtsujii_skogs_combat_batch_rm - rowMeans(vtsujii_skogs_combat_batch_rm),colData=filter_table)
+vtsujii_skogs_combat_batch_rm_Summ_Exp <- SummarizedExperiment(vtsujii_skogs_combat_batch_rm - rowMeans(vtsujii_skogs_combat_batch_rm),colData=meta)
 pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp <- plotPCA(DESeqTransform(vtsujii_skogs_combat_batch_rm_Summ_Exp), intgroup=c("species", "tissue"), ntop = 50, returnData=TRUE) 
 round_percentVar <- round(100 * attr(pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp, "percentVar"))
 names(pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp)[c(4,5)] = c("species", "tissue")
