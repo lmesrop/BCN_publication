@@ -1,5 +1,5 @@
-#Description:
-#Author:
+#Description: Generate cross-species gene expression matrix for downstream analyses. 
+#Author: Lisa Yeter Mesrop
 #Goal: 
 
 #load libraries 
