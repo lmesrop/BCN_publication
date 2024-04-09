@@ -23,10 +23,10 @@ library(DESeq2)
 ##### import dataframes  #####
 
 ## import the cross-species expression matrix 
-vtsujii_skogs_joined_one_to_one_na_omit_df_non_dup
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders_non_dup
 
 ## make the metasheet df
-meta <- data.frame(row.names = colnames(vtsujii_skogs_joined_one_to_one_na_omit_df_non_dup)) 
+meta <- data.frame(row.names = colnames(vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders_non_dup)) 
 sample_name = c("Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut", "Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut", "Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut", "Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut","Tsujii_Upper_lip", "Tsujii_Eye", "Tsujii_Gut","Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut", "Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut", "Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut", "Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut","Skogs_Upper_lip", "Skogs_Eye", "Skogs_Gut" )
 meta$sample_name <- sample_name 
 meta$names <- rownames(meta)
@@ -41,7 +41,7 @@ meta$tissue <- tissue
 ##### prep cross-species expression matrix for PCA #####
 
 ## use DESeq2 to remove expression counts with less than 5 counts in more than 3 samples 
-dds_count_table <- DESeqDataSetFromMatrix(countData = vtsujii_skogs_joined_one_to_one_na_omit_df_non_dup, colData = meta, design = ~sample_name)
+dds_count_table <- DESeqDataSetFromMatrix(countData = vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders_non_dup, colData = meta, design = ~sample_name)
 dds_merged_table_prefiltered <- dds_count_table[rowSums(counts(dds_count_table) >= 5) >=3,];
 nrow(dds_merged_table_prefiltered)
 dds_merged_table_prefiltered_assay <- assay(dds_merged_table_prefiltered)
