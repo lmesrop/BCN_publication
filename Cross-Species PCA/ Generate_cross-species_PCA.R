@@ -65,7 +65,7 @@ names(pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp)[c(4,5)] = c("species",
 
 ## plot the PCA with ggplot 
 
-ggplot(pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp , aes(PC1, PC2, color= tissue, group = tissue ,shape=species)) +
+ggplot_pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp <- ggplot(pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp , aes(PC1, PC2, color= tissue, group = tissue ,shape=species)) +
   geom_point(size=3,alpha = 1) +
   scale_shape_manual(values = c(1,17))+
   scale_color_manual(values = c('#C24C3D','#8E3DC2','#E69F00')) +
@@ -77,5 +77,6 @@ ggplot(pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp , aes(PC1, PC2, color=
   theme(panel.border = element_rect(colour = "black", fill=NA, size=1)) +
   stat_ellipse(type = "norm",geom = "polygon",aes(fill = tissue), alpha = 0.0, level = 0.95,show.legend = F)
 
+ggplot_pca_vtsujii_vtsujii_skogs_combat_batch_rm_Summ_Exp
 
 
