@@ -1,6 +1,6 @@
 #Description: Generate cross-species gene expression matrix for downstream analyses. 
 #Author: Lisa Yeter Mesrop
-#Goal: 
+#Goal: Use the individual count expression matrices for V.tsujii and Skogsbergia sp. datasets (upper lip, compound eye, gut) and output from Orthofinder (i.e. one-to-one orthologs) to generate cross-species expression matrix. 
 
 #load libraries 
 library(tidyverse) 
@@ -102,17 +102,40 @@ vtsujii_skogs_joined_one_to_one  <- plyr::join(vtsujii_filtered_join ,skogs_filt
 #omit any rows that don't have expression counts in both V.tsujii and Skogsbergia sp. 
 vtsujii_skogs_joined_one_to_one_na_omit <- na.omit(vtsujii_skogs_joined_one_to_one)
 
-#the plyr::join function creates duplicated columns. Remove the duplicated columns. 
+#the plyr::join function generated duplicated columns. Remove the duplicated columns. 
 vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders <- vtsujii_skogs_joined_one_to_one_na_omit %>% dplyr::select(-c(17, 18))
 
-#remove duplicated orthogroup numbers ?
-vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders_non_dup <-  vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders %>% distinct(Orthogroup, .keep_all = TRUE)
+#one orthogroup number can have multiple one-to-one orthologs. Need to generate unique names for orthogroup numbers in column Orthogroup. 
+#convert the Orthogroup column from factor to character 
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders <- vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders %>%
+  mutate(Orthogroup = as.character(Orthogroup))
 
-#
+#identify duplicated rows based on the column Orthogroup
+duplicated_rows <- duplicated(vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders$Orthogroup)
 
+#function to add consecutive numbers to duplicate orthogroup numbers in column Orthogroup to make them unique. 
+add_consecutive_num_to_dup_ortho <- function(x) {
+  if (any(duplicated(x))) {
+    seq_num <- seq_along(x)
+    x[duplicated(x)] <- paste0(x[duplicated(x)], "_duplicated", seq_num[duplicated(x)])
+  }
+  return(x)
+}
 
+#use the function to add consecutive numbers to duplicated orthogroup numbers in the column Orthogroup
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders <-vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders %>%
+  mutate(Orthogroup = add_consecutive_num_to_dup_ortho(Orthogroup))
 
+#make the column Orthogroup the rownames
+row.names(vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders) <- vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders$Orthogroup
 
+#clean up df 
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders$tsujii <- NULL
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders$skogs <- NULL
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders$Orthogroup <- NULL
+
+#final df 
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders
 
 
 
