@@ -96,8 +96,22 @@ colnames(skogs_one_to_one_ortholog)[16] <- "skogs"
 skogs_filtered_join  <- plyr::join(skogs_one_to_one_ortholog , All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup_rmtsujii_dups, by = "skogs", type ="left", match = "all")
 vtsujii_filtered_join  <- plyr::join(vtsujii_one_to_one_ortholog , All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup_rmtsujii_dups, by = "tsujii", type ="left", match = "all")
 
-#take the largest expression matrix and subset it by the smaller 
-#skogs_filtered_join
+#take the largest expression matrix and subset it by the smaller matrix 
+vtsujii_skogs_joined_one_to_one  <- plyr::join(vtsujii_filtered_join ,skogs_filtered_join, by = "tsujii", type ="left", match = "all")
+
+#omit any rows that don't have expression counts in both V.tsujii and Skogsbergia sp. 
+vtsujii_skogs_joined_one_to_one_na_omit <- na.omit(vtsujii_skogs_joined_one_to_one)
+
+#the plyr::join function creates duplicated columns. Remove the duplicated columns. 
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders <- vtsujii_skogs_joined_one_to_one_na_omit %>% dplyr::select(-c(17, 18))
+
+#remove duplicated orthogroup numbers ?
+vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders_non_dup <-  vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders %>% distinct(Orthogroup, .keep_all = TRUE)
+
+#
+
+
+
 
 
 
