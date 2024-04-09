@@ -1,15 +1,11 @@
 #!/usr/bin/bash
 
 #Description: Obtain lists of clade-specific genes
-
 #Author: Adapted from Goodheart et al. (2024) 
-
 #Usage: bash post_kinfin.sh [species] [lux] [lum] [ostra] [arthro] 
-
 #Example: bash post_kinfin.sh Vargula_tsujii_cdhit_95 lux lum ostra arthro
 
-####
-# Set up clade names of interest
+#### Set up clade names of interest
 sp=$1
 lx=$2
 lm=$3
