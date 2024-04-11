@@ -1,7 +1,6 @@
 
-# Goal: Generate GO-Figure! semantic plots 
-
-# Overview: Generate GO semantic plots using outputs from TopGO enrichment analyses performed in Jupyter Notebook.  
+# Description: Generate GO-Figure! semantic plots 
+# Goal: Generate GO semantic plots using outputs from TopGO enrichment analyses performed in Jupyter Notebook.  
 
 ### Script 1
 
