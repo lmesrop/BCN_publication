@@ -1,5 +1,6 @@
 
 # Description: Generate GO-Figure! semantic plots 
+# Package: GO-Figure! 
 # Goal: Generate GO semantic plots using outputs from TopGO enrichment analyses performed in Jupyter Notebook.  
 
 ### Script 1
@@ -26,6 +27,7 @@ python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Var
 GO-Figure! analysis for all co-expressed genes of the BCN (Vargula tsujii). 
 
 python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_BCN_df.tsv -o gofigure_directory_BCN_si0.1_color -si 0.1 -m 50 -e 100 -q pdf -p Purples
+
 
 
 
