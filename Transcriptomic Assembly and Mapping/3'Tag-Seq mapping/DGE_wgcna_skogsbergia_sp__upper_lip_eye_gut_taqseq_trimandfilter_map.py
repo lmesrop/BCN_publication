@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-Description: 
-Authors:
-Goal: 
+#Description: Generate slurm submission scripts to process and map 3'Tag-Seq samples Sk.10A_fasta97.counts.tab, Sk.6A_fasta97.counts.tab, Sk.7A_fasta97.counts.tab, Sk.8A_fasta97.counts.tab, Sk.9A_fasta97.counts.tab, Sk.10B_fasta97.counts.tab, Sk.6B_fasta97.counts.tab, Sk.7B_fasta97.counts.tab, Sk.8B_fasta97.counts.tab, Sk.9B_fasta97.counts.tab, Sk.10C_fasta97.counts.tab, Sk.6C_fasta97.counts.tab, Sk.7C_fasta97.counts.tab, Sk.8C_fasta97.counts.tab and Sk.9C_fasta97.counts.tab. 
+#Author: Adapted from Jessica Goodheart. 
+#Goal: Take the raw fastq files, perform QC checks, filter the adaptor, remove PCR duplicates, trim, and map reads to reference transcriptome. 
 
 import os, re, sys, string
 
