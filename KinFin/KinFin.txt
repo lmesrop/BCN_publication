@@ -1,5 +1,6 @@
 # Description: Steps for KinFin Analysis 
 # Author: Adapted from Goodheart et al. (2024) 
+# Goal: 
 
 #### Step 1: Create config.txt file 
 
