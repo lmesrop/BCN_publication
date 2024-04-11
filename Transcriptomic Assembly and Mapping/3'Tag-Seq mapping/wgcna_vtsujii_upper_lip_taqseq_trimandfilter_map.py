@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-#Description: Generate slurm submission scripts to process and map 3'Tag-Seq samples vtu1, vtu2, vtu3, vtu4, vtu5, vtu6, vtu7, vtu8, vtu9, vtu10. 
+#Description: Generate slurm submission scripts to process and map 3'Tag-Seq samples vtu1.counts.tab, vtu2.counts.tab, vtu3.counts.tab, vtu4.counts.tab, vtu5.counts.tab, vtu6.counts.tab, vtu7.counts.tab, vtu8.counts.tab, vtu9.counts.tab, vtu10.counts.tab. 
 #Author: Jessica Goodheart 
 #Goal: Take the raw fastq files, perform QC checks, filter the adaptor, remove PCR duplicates, trim, and map reads to reference transcriptome. 
 
