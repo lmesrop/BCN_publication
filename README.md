@@ -18,6 +18,6 @@ Juypter Notebook 1
 
 Juypter Notebook 2 
 
-## Supplementary material to other code, tables, and figures found in the Github repository. 
+## Supplementary material to other code, tables, and figures can be found in the Github repository. 
 
 
