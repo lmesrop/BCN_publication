@@ -1,4 +1,4 @@
-#Description: Generate cross-species gene expression matrix for downstream analyses. 
+#Description: Generate cross-species gene expression matrix for PCA. 
 #Author: Lisa Yeter Mesrop
 #Goal: Use the individual count expression matrices for V.tsujii and Skogsbergia sp. datasets (upper lip, compound eye, gut) and output from Orthofinder (i.e. one-to-one orthologs) to generate cross-species expression matrix. 
 
