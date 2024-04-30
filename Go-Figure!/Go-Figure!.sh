@@ -20,9 +20,6 @@ python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Sko
 
 Go-Figure! analysis for Vargula tsujii using DE genes (significantly upregulated) for luminous upper lip. 
 
-python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_Vargulatsujii_df.tsv -o gofigure_directory_DE_Vargula_tsujii_si0.5 -si 0.5 -m 50 -e 100 -q pdf
-
-#new version 
 python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_bio_upper_lip_Vargulatsujii_df_nodes61.tsv -o GO_BioUL_gofigure_directory_si0.5 -e 100 -m 100 -si 0.5 -q pdf
 
 
