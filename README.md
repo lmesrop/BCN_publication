@@ -1,4 +1,4 @@
-# Integrating new genes and ancient secretory pathways contributes to the origin of an ecologically impactful bioluminescence system
+# Ancient secretory pathways contributed to the evolutionary origin of an ecologically impactful bioluminescence system
 
 Lisa Y. Mesrop*, Gigi Minsky,  Michael S. Drummond, Jessica A. Goodheart, Stephen Proulx, Todd H. Oakley
 
