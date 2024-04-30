@@ -23,7 +23,6 @@ Go-Figure! analysis for Vargula tsujii using DE genes (significantly upregulated
 python /home/lmesrop/programs/GO-Figure/gofigure.py -j topgo -i GO_figure_DE_bio_upper_lip_Vargulatsujii_df_nodes61.tsv -o GO_BioUL_gofigure_directory_si0.5 -e 100 -m 100 -si 0.5 -q pdf
 
 
-
 ### Script 4 
 
 GO-Figure! analysis for all co-expressed genes of the BCN (Vargula tsujii). 
