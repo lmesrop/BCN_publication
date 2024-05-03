@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #Description: Generate slurm submission scripts to process and map 3'Tag-Seq samples Vt.1A.counts.tab, Vt.2A.counts.tab, Vt.3A.counts.tab, Vt.4A.counts.tab, Vt.5A.counts.tab, Vt.1B.counts.tab, Vt.2B.counts.tab, Vt.3B.counts.tab, Vt.4B.counts.tab, Vt.5B.counts.tab, Vt.1C.counts.tab, Vt.2C.counts.tab, Vt.3C.counts.tab, Vt.4C.counts.tab and Vt.5C.counts.tab. 
-#Author: Adapted from wgcna_vtsujii_upper_lip_taqseq_trimandfilter_map.py written by Jessica Goodheart. 
+#Author: Adapted from wgcna_vtsujii_upper_lip_taqseq_trimandfilter_map.py
 #Goal: Take the raw fastq files, perform QC checks, filter the adaptor, remove PCR duplicates, trim, and map reads to reference transcriptome. 
 
 import os, re, sys, string
