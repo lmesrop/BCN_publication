@@ -1,6 +1,6 @@
 # Description: Steps for KinFin Analysis 
 # Author: Adapted from Goodheart et al. (2024) 
-# Goal: 
+# Goal: Prep for KinFin Analysis
 
 #### Step 1: Create config.txt file 
 
@@ -32,7 +32,7 @@ mv Orthogroups_edited.txt.temp Orthogroups_edited.txt
 
 #### Step 4: Run KinFin.sh script 
 
-/home/lmesrop/kinfin/kinfin -g Orthogroups_edited.txt -c KinFin_config_v3.txt -s SequenceIDs.txt -p SpeciesIDs.txt -t SpeciesTree_rooted.txt --infer_singletons -o kinfin_results_v3
+/home/lmesrop/kinfin/kinfin -g Orthogroups_edited.txt -c KinFin_config_run.txt -s SequenceIDs.txt -p SpeciesIDs.txt -t SpeciesTree_rooted.txt --infer_singletons -o kinfin_results_run
 
 
 #References: Goodheart, Jessica A et al. “A chromosome-level genome for the nudibranch gastropod Berghia stephanieae helps parse clade-specific gene expression in novel and conserved phenotypes.” BMC biology vol. 22,1 9. 17 Jan. 2024, doi:10.1186/s12915-024-01814-3
