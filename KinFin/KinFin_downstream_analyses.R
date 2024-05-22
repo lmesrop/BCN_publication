@@ -22,31 +22,21 @@ lux_only_proteins_removep <- lux_only_proteins %>% separate(V1, c( "transcript_i
 ## import dataframes for significantly upregulated genes of the luminous upper lip, compound eye and gut
 
 #luminous upper lip 
-sigOE.annotated_upregulated_logfold_upper_lip_vseye_100122$gene
+df_bio_upper_lip
 #compound eye 
-sigOE.annotated_downregulated_logfold_upper_lip_vseye_100122$gene
+df_compound_eye
 #gut 
-sigOE.annotated_upregulated_logfold_gut_vs_eye_ordered_100122$gene
+df_gut
 
 #dataframes for co-expressed BCN genes 
 #BCN
-X050222_red_module_gene_annot_power_8_prefilter_5_3$transcript_id
+red_module_gene_annot_power_8_prefilter_5_3$transcript_id
 #gut module 
 vtsujii_purple_gut_module_gene_annot_power_8_prefilter_5_3$transcript_id
 
 ##extract just the names and rename for clarity 
-
-#luminous upper lip 
-sigfig_up_bio_upper_lip <-subset(sigOE.annotated_upregulated_logfold_upper_lip_vseye_100122, select = "gene")
-
-#compound eye 
-sigfig_up_compound_eye <- subset(sigOE.annotated_downregulated_logfold_upper_lip_vseye_100122, select = "gene") 
-
-#gut 
-sigfig_up_gut <- subset(sigOE.annotated_upregulated_logfold_gut_vs_eye_ordered_100122, select = "gene") 
-
 #BCN
-BCN_module <- subset(X050222_red_module_gene_annot_power_8_prefilter_5_3, select = "transcript_id") 
+BCN_module <- subset(red_module_gene_annot_power_8_prefilter_5_3, select = "transcript_id") 
 
 #gut module 
 gut_module <- subset(vtsujii_purple_gut_module_gene_annot_power_8_prefilter_5_3, select = "transcript_id") 
@@ -100,10 +90,10 @@ match_transcripts_to_taxonomic_origin <- function(input_df, match_list) {
 
 #### use the function to find the number of transcripts at each taxonomic level for each dataset ####
 
-## sigfig_up_bio_upper_lip dataset 
+## bioluminescent upper lip 
 
 ## call the function 
-matched_transcripts_sigfig_up_bio_upper_lip <- match_transcripts_to_taxonomic_origin(sigfig_up_bio_upper_lip, list1)
+matched_transcripts_sigfig_up_bio_upper_lip <- match_transcripts_to_taxonomic_origin(df_bio_upper_lip, list1)
 
 ## print the output 
 
@@ -122,10 +112,10 @@ matched_sigfig_up_bio_upper_lip_LUX <-matched_transcripts_sigfig_up_bio_upper_li
 matched_sigfig_up_bio_upper_lip_VTSUJII <-matched_transcripts_sigfig_up_bio_upper_lip[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_sigfig_up_bio_upper_lip_ALL_transcripts_with_predictedORFs <-matched_transcripts_sigfig_up_bio_upper_lip[["ALL_transcripts_with_predictedORFs"]]
 
-## sigfig_up_compound_eye dataset 
+## compound eye 
 
 ## call the function 
-matched_transcripts_sigfig_up_compound_eye <- match_transcripts_to_taxonomic_origin(sigfig_up_compound_eye, list1)
+matched_transcripts_sigfig_up_compound_eye <- match_transcripts_to_taxonomic_origin(df_compound_eye, list1)
 
 ## print the output 
 
@@ -144,10 +134,11 @@ matched_sigfig_up_compound_eye_LUX <-matched_transcripts_sigfig_up_compound_eye[
 matched_sigfig_up_compound_eye_VTSUJII <-matched_transcripts_sigfig_up_compound_eye[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_sigfig_up_compound_eye_ALL_transcripts_with_predictedORFs <-matched_transcripts_sigfig_up_compound_eye[["ALL_transcripts_with_predictedORFs"]]
 
-## sigfig_up_gut dataset 
+
+## gut
 
 ## call the function 
-matched_transcripts_sigfig_up_gut <- match_transcripts_to_taxonomic_origin(sigfig_up_gut, list1)
+matched_transcripts_sigfig_up_gut <- match_transcripts_to_taxonomic_origin(df_gut, list1)
 
 ## print the output 
 
@@ -231,120 +222,4 @@ matched_ALL_DGE_min2counts_LUM <- matched_transcripts_ALL_DGE_min2counts[["lum_o
 matched_ALL_DGE_min2counts_LUX <-matched_transcripts_ALL_DGE_min2counts[["lux_only_proteins_removep"]]
 matched_ALL_DGE_min2counts_VTSUJII <-matched_transcripts_ALL_DGE_min2counts[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_ALL_DGE_min2counts_ALL_transcripts_with_predictedORFs <-matched_transcripts_ALL_DGE_min2counts[["ALL_transcripts_with_predictedORFs"]]
-
-#### find the number of uniquely expressed transcripts at each taxonomic level #### 
-
-## dataframes for the significantly upregulated genes in each tissue
-sigfig_up_bio_upper_lip
-sigfig_up_compound_eye
-sigfig_up_gut
-
-#generate a venn diagram to visualize shared significantly upregulated genes across tissue types
-unique_venn_list <- list(
-  Bio_Upper_Lip =  sigfig_up_bio_upper_lip$gene , 
-  Gut = sigfig_up_gut$gene,
-  Compound_Eye = sigfig_up_compound_eye$gene
-)
-
-ggvenn(
-  unique_venn_list, 
-  fill_color = c("#3DB3C2", "#71C23D", "#8E3DC2"),
-  stroke_size = .7, set_name_size = 4.5
-)
-
-##find the genes uniquely upregulated in the bio upper lip and not in the gut
-lightorgan_unique_de  <- sigfig_up_bio_upper_lip$gene[!sigfig_up_bio_upper_lip$gene %in% sigfig_up_gut$gene]
-lightorgan_unique_de_df <- as.data.frame(lightorgan_unique_de)
-nrow(lightorgan_unique_de_df) 
-
-#unique_de_lightorgan_annot <- Vtsujii_Trinotate_lym_subset %>% filter(transcript_id %in% lightorgan_unique_de_df$lightorgan_unique_de)
-#write.csv(unique_de_lightorgan_annot, file = "unique_de_lightorgan_annot.csv" )
-
-##find the genes uniquely upregulated in the gut by subtracting from the bio upper lip 
-gut_unique_de_v1 <- sigfig_up_gut$gene[!sigfig_up_gut$gene %in% sigfig_up_bio_upper_lip$gene]
-gut_unique_de_v1_df <- as.data.frame(gut_unique_de_v1)
-nrow(gut_unique_de_v1_df) 
-
-##now subtract the compound eye from the gut_unique_de_v1_df
-gut_unique_de <- gut_unique_de_v1_df$gut_unique_de_v1[!gut_unique_de_v1_df$gut_unique_de_v1 %in% sigfig_up_compound_eye$gene]
-gut_unique_de_df <- as.data.frame(gut_unique_de)
-nrow(gut_unique_de_df) 
-
-#unique_de_GUT_annot <- Vtsujii_Trinotate_lym_subset %>% filter(transcript_id %in% gut_unique_de_df$gut_unique_de)
-#write.csv(unique_de_GUT_annot, file = "unique_de_GUT_annot.csv")
-
-##find the genes uniquely upregulated in the compound eye by subtracting from the gut 
-eye_unique_de <- sigfig_up_compound_eye$gene[!sigfig_up_compound_eye$gene %in% sigfig_up_gut$gene]
-eye_unique_de_df <- as.data.frame(eye_unique_de)
-nrow(eye_unique_de_df) 
-
-#unique_de_EYE_annot <- Vtsujii_Trinotate_lym_subset %>% filter(transcript_id %in% eye_unique_de_df$eye_unique_de)
-#write.csv(unique_de_EYE_annot, file = "unique_de_EYE_annot.csv")
-
-## gut_unique_de_df
-
-## call the function 
-matched_transcripts_gut_unique_de_df <- match_transcripts_to_taxonomic_origin(gut_unique_de_df, list1)
-
-## print the output 
-
-for (df_name in names(matched_transcripts_gut_unique_de_df)) {
-  df <- matched_transcripts_gut_unique_de_df[[df_name]]
-  cat("Dataset: gut_unique_de_df \n")
-  cat("Taxonomic level:", df_name, "\n")
-  cat("Number of transcripts:", nrow(df), "\n\n")
-}
-
-## save the transcript ids for each taxonomic level 
-matched_ALL_gut_unique_de_df_ARTHRO <-matched_transcripts_gut_unique_de_df[["arthro_only_proteins_removep"]]
-matched_ALL_gut_unique_de_df_OSTRA <-matched_transcripts_gut_unique_de_df[["ostra_only_proteins_removep"]]
-matched_ALL_gut_unique_de_df_LUM <- matched_transcripts_gut_unique_de_df[["lum_only_proteins_removep"]]
-matched_ALL_gut_unique_de_df_LUX <-matched_transcripts_gut_unique_de_df[["lux_only_proteins_removep"]]
-matched_ALL_gut_unique_de_df_VTSUJII <-matched_transcripts_gut_unique_de_df[["Vargula_tsujii_cdhit_95_proteins_removep"]]
-matched_ALL_gut_unique_de_df_ALL_transcripts_with_predictedORFs <-matched_transcripts_gut_unique_de_df[["ALL_transcripts_with_predictedORFs"]]
-
-## lightorgan_unique_de_df
-
-## call the function 
-matched_transcripts_lightorgan_unique_de_df <- match_transcripts_to_taxonomic_origin(lightorgan_unique_de_df, list1)
-
-## print the output 
-
-for (df_name in names(matched_transcripts_lightorgan_unique_de_df)) {
-  df <- matched_transcripts_lightorgan_unique_de_df[[df_name]]
-  cat("Dataset: lightorgan_unique_de_df \n")
-  cat("Taxonomic level:", df_name, "\n")
-  cat("Number of transcripts:", nrow(df), "\n\n")
-}
-
-## save the transcript ids for each taxonomic level 
-matched_ALL_lightorgan_unique_de_df_ARTHRO <-matched_transcripts_lightorgan_unique_de_df[["arthro_only_proteins_removep"]]
-matched_ALL_lightorgan_unique_de_df_OSTRA <-matched_transcripts_lightorgan_unique_de_df[["ostra_only_proteins_removep"]]
-matched_ALL_lightorgan_unique_de_df_LUM <- matched_transcripts_lightorgan_unique_de_df[["lum_only_proteins_removep"]]
-matched_ALL_lightorgan_unique_de_df_LUX <-matched_transcripts_lightorgan_unique_de_df[["lux_only_proteins_removep"]]
-matched_ALL_lightorgan_unique_de_df_VTSUJII <-matched_transcripts_lightorgan_unique_de_df[["Vargula_tsujii_cdhit_95_proteins_removep"]]
-matched_ALL_lightorgan_unique_de_df_ALL_transcripts_with_predictedORFs <-matched_transcripts_lightorgan_unique_de_df[["ALL_transcripts_with_predictedORFs"]]
-
-## eye_unique_de_df
-
-## call the function 
-matched_transcripts_eye_unique_de_df <- match_transcripts_to_taxonomic_origin(eye_unique_de_df, list1)
-
-## print the output 
-
-for (df_name in names(matched_transcripts_eye_unique_de_df)) {
-  df <- matched_transcripts_eye_unique_de_df[[df_name]]
-  cat("Dataset: eye_unique_de_df \n")
-  cat("Taxonomic level:", df_name, "\n")
-  cat("Number of transcripts:", nrow(df), "\n\n")
-}
-
-## save the transcript ids for each taxonomic level 
-matched_ALL_eye_unique_de_df_ARTHRO <-matched_transcripts_eye_unique_de_df[["arthro_only_proteins_removep"]]
-matched_ALL_eye_unique_de_df_df_OSTRA <-matched_transcripts_eye_unique_de_df[["ostra_only_proteins_removep"]]
-matched_ALL_eye_unique_de_df_df_LUM <- matched_transcripts_eye_unique_de_df[["lum_only_proteins_removep"]]
-matched_ALL_eye_unique_de_df_LUX <-matched_transcripts_eye_unique_de_df[["lux_only_proteins_removep"]]
-matched_ALL_eye_unique_de_df_VTSUJII <-matched_transcripts_eye_unique_de_df[["Vargula_tsujii_cdhit_95_proteins_removep"]]
-matched_ALL_eye_unique_de_df_ALL_transcripts_with_predictedORFs <-matched_transcripts_eye_unique_de_df[["ALL_transcripts_with_predictedORFs"]]
-
 
