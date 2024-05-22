@@ -1,5 +1,6 @@
-
-
+#Description: Identify putative toxin-like genes in the putative secretomes of tissue types and BCN. 
+#Author: Lisa Yeter Mesrop 
+#Goal: Geness were identified as putative toxin-like genes if they had a domain present in known toxin protein families related to toxins.
 
 #load libraries 
 library(matrixStats)
