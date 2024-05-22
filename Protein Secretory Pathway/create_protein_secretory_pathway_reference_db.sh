@@ -2,6 +2,8 @@
 #Author: Lisa Yeter Mesrop 
 #Goal: Use the blast database to find protein secretory pathway genes in the significantly upregulated genes of the bioluminescent upper lip, non-luminous upper lip, and BCN. 
 
+#run in R 
+
 #download the protein secretory pathway genes from Feizi et al. (2017)
 Hu_secretory_system_genes_ensembleids <- as.character(Hu_secretory_system_genes$ensgid)
 
@@ -35,7 +37,9 @@ output_file <- "secretory_protein_pathway_fasta.txt"
 writeLines(combined_sequences, con = output_file)
 
 
-#make blast datatbase
+#run in the command line
+
+#make blast database
 makeblastdb -in secretory_protein_pathway.fasta -dbtype nucl -out secretory_protein_pathway_ensembl_db
 
 #references
