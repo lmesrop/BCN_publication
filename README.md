@@ -15,7 +15,7 @@ Evolutionary innovations in chemical secretion – such as the production of sec
 Supplementary material that includes code, tables, and figures can be found in R Juypter Notebook 1 and Jupyter Notebook 2. 
 
 
-<a href="[https://github.com/lmesrop/BCN_publication/blob/bd4433ba80d5b71675072baa98305936b5f44312/Jupyter%20Notebook/BCN_supp_Luminous_Ostracod_Mesrop_part_1_of_2.html]" target="_blank">Juypter Notebook 1</a> 
+<a href="https://github.com/lmesrop/BCN_publication/blob/bd4433ba80d5b71675072baa98305936b5f44312/Jupyter%20Notebook/BCN_supp_Luminous_Ostracod_Mesrop_part_1_of_2.html" target="_blank">Juypter Notebook 1</a> 
 
 
 [Juypter Notebook 1](BCN_supp_Luminous_Ostracod_Mesrop_part_1_of_2.html)
