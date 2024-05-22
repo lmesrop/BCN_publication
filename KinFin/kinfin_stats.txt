@@ -1,6 +1,0 @@
-Clade ,Clade-Specific Proteins  (w/o nested proteins) ,Clade Proteins 
-Vargula tsujii ,3905,3905
-Luxorina ,747,1871
-Luminini ,646,2517
-Ostracoda,2991,5508
-Arthropoda ,9182,14690
