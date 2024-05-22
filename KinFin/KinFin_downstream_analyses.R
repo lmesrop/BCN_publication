@@ -90,7 +90,7 @@ match_transcripts_to_taxonomic_origin <- function(input_df, match_list) {
 
 #### use the function to find the number of transcripts at each taxonomic level for each dataset ####
 
-## bioluminescent upper lip 
+### bioluminescent upper lip ###
 
 ## call the function 
 matched_transcripts_sigfig_up_bio_upper_lip <- match_transcripts_to_taxonomic_origin(df_bio_upper_lip, list1)
@@ -112,7 +112,7 @@ matched_sigfig_up_bio_upper_lip_LUX <-matched_transcripts_sigfig_up_bio_upper_li
 matched_sigfig_up_bio_upper_lip_VTSUJII <-matched_transcripts_sigfig_up_bio_upper_lip[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_sigfig_up_bio_upper_lip_ALL_transcripts_with_predictedORFs <-matched_transcripts_sigfig_up_bio_upper_lip[["ALL_transcripts_with_predictedORFs"]]
 
-## compound eye 
+### compound eye ###
 
 ## call the function 
 matched_transcripts_sigfig_up_compound_eye <- match_transcripts_to_taxonomic_origin(df_compound_eye, list1)
@@ -135,7 +135,7 @@ matched_sigfig_up_compound_eye_VTSUJII <-matched_transcripts_sigfig_up_compound_
 matched_sigfig_up_compound_eye_ALL_transcripts_with_predictedORFs <-matched_transcripts_sigfig_up_compound_eye[["ALL_transcripts_with_predictedORFs"]]
 
 
-## gut
+### gut ###
 
 ## call the function 
 matched_transcripts_sigfig_up_gut <- match_transcripts_to_taxonomic_origin(df_gut, list1)
@@ -157,7 +157,7 @@ matched_sigfig_up_gut_LUX <-matched_transcripts_sigfig_up_gut[["lux_only_protein
 matched_sigfig_up_gut_VTSUJII <-matched_transcripts_sigfig_up_gut[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_sigfig_up_gut_ALL_transcripts_with_predictedORFs <-matched_transcripts_sigfig_up_gut[["ALL_transcripts_with_predictedORFs"]]
 
-# BCN_module dataset 
+### BCN module dataset ### 
 
 ## call the function 
 matched_transcripts_BCN_module <- match_transcripts_to_taxonomic_origin(BCN_module, list1)
@@ -179,7 +179,7 @@ matched_BCN_module_LUX <-matched_transcripts_BCN_module[["lux_only_proteins_remo
 matched_BCN_module_VTSUJII <-matched_transcripts_BCN_module[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_BCN_module_ALL_transcripts_with_predictedORFs <-matched_transcripts_BCN_module[["ALL_transcripts_with_predictedORFs"]]
 
-# gut_module dataset 
+### gut_module dataset ###
 
 ## call the function 
 matched_transcripts_gut_module <- match_transcripts_to_taxonomic_origin(gut_module, list1)
@@ -201,7 +201,7 @@ matched_gut_module_LUX <-matched_transcripts_gut_module[["lux_only_proteins_remo
 matched_gut_module_VTSUJII <-matched_transcripts_gut_module[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_gut_module_ALL_transcripts_with_predictedORFs <-matched_transcripts_gut_module[["ALL_transcripts_with_predictedORFs"]]
 
-# ALL_DGE_min2counts
+### ALL_DGE_min2counts ###
 
 ## call the function 
 matched_transcripts_ALL_DGE_min2counts <- match_transcripts_to_taxonomic_origin(ALL_DGE_min2counts, list1)
