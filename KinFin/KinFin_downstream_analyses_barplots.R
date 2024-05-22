@@ -34,7 +34,7 @@ data_DE_barplot<- ggplot(data_DE, aes(fill=factor(origin_of_transcripts_DE, leve
   labs(fill = "Origin of Genes") +
   theme(axis.text = element_text(size = 16)) +
   theme(axis.title = element_text(size = 20))   +
-  theme(legend.text = element_text(size = 16))  +           # Legend text
+  theme(legend.text = element_text(size = 16))  +         
   theme(legend.title = element_text(size = 20))  
 
 data_DE_barplot +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
@@ -56,7 +56,7 @@ data_all_transcripts_barplot <- ggplot(data_all, aes(fill=factor(origin_of_trans
   labs(fill = "Origin of Genes")  +
   theme(axis.text = element_text(size = 16)) +
   theme(axis.title = element_text(size = 20))   +
-  theme(legend.text = element_text(size = 16))  +           # Legend text
+  theme(legend.text = element_text(size = 16))  +         
   theme(legend.title = element_text(size = 20))  
 
 
@@ -83,8 +83,8 @@ data_BCN_barplot<- ggplot(data_BCN, aes(fill=factor(origin_of_transcripts_BCN, l
   labs(fill = "Origin of Genes") +
   theme(axis.text = element_text(size = 16)) +
   theme(axis.title = element_text(size = 20))   +
-  theme(legend.text = element_text(size = 16))  +           # Legend text
-  theme(legend.title = element_text(size = 20))  
+  theme(legend.text = element_text(size = 16))  +   
+  theme(legend.title = element_text(size = 20)) 
 
 
 data_BCN_barplot  +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
