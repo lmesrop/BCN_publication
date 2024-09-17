@@ -1,6 +1,6 @@
 #Description: Identify putative toxin-like genes in the putative secretomes of tissue types and BCN. 
 #Author: Lisa Yeter Mesrop 
-#Goal: Geness were identified as putative toxin-like genes if they had a domain present in known toxin protein families related to toxins.
+#Goal: Genes were identified as putative toxin-like if they contained a domain associated with known toxin protein families.
 
 #load libraries 
 library(matrixStats)
@@ -13,7 +13,7 @@ library(readxl)
 library(plyr)
 library(tidyverse)
 
-#read in the putative secretomes for significantly upregulated genes of upper lips, compound eyes and guts of Vargula tsujii and Skogsbergia sp. Read in the putative secretome for the BCN. All dataframes include annotations. 
+#read in the putative secretomes for significantly upregulated genes of upper lips, compound eyes, and guts of Vargula tsujii and Skogsbergia sp. Read in the putative secretome for the BCN. All dataframes include annotations. 
 
 secretome_Skogs_sigfig_unique_UpperLip
 secretome_Skogs_sigfig_unique_comEye
