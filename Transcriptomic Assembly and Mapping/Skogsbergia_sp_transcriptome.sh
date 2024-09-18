@@ -1,3 +1,5 @@
+#Description: The following scripts were used to generate the de novo transcriptome assembly and identify protein-coding genes for the non-luminous Skogsbergia sp. 
+
 #run Trinity
 Trinity --seqType fq --max_memory 96G --left Sk_1_1.fq.gz --right Sk_1_2.fq.gz --CPU 16 --trimmomatic
 
