@@ -28,7 +28,6 @@ head(vargulatsujii_v_skogsbergia_ALL_orthologs)
 ##### Subset to include only one-to-one orthologs #####
 
 #find all orthogroups that have one-to-one orthologs across the two columns (i.e. first column V.tsujii orthologs and second column Skogsbergia sp.)  
-#remove any rows that have multiple orthologs in each column 
 
 #first start with V.tsujii 
 vargulatsujii_v_skogsbergia_ALL_orthologs_v1 <- vargulatsujii_v_skogsbergia_ALL_orthologs %>% filter(!grepl(',', Vargula_tsujii_cdhit_95.fasta.transdecoder))
