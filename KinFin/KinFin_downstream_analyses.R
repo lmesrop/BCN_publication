@@ -31,15 +31,10 @@ df_gut
 #dataframes for co-expressed BCN genes 
 #BCN
 red_module_gene_annot_power_8_prefilter_5_3$transcript_id
-#gut module 
-vtsujii_purple_gut_module_gene_annot_power_8_prefilter_5_3$transcript_id
 
 ##extract just the names and rename for clarity 
 #BCN
 BCN_module <- subset(red_module_gene_annot_power_8_prefilter_5_3, select = "transcript_id") 
-
-#gut module 
-gut_module <- subset(vtsujii_purple_gut_module_gene_annot_power_8_prefilter_5_3, select = "transcript_id") 
 
 ## create a dataframe for the total number of transcripts that have predicted ORFs (from the OrthoFinder and KinFin analyses).Take the txt files from the KinFin output - arthro_proteins.txt and Vargula_tsujii_cdhit_95_proteins.txt - and combine them into a single dataframe ALL_arthro_and_vtsujii_specific_proteins and remove nested transcripts that have been counted twice and removed .p* 
 ALL_arthro_and_vtsujii_specific_proteins_rm <- ALL_arthro_and_vtsujii_specific_proteins %>% distinct()
@@ -178,28 +173,6 @@ matched_BCN_module_LUM <- matched_transcripts_BCN_module[["lum_only_proteins_rem
 matched_BCN_module_LUX <-matched_transcripts_BCN_module[["lux_only_proteins_removep"]]
 matched_BCN_module_VTSUJII <-matched_transcripts_BCN_module[["Vargula_tsujii_cdhit_95_proteins_removep"]]
 matched_BCN_module_ALL_transcripts_with_predictedORFs <-matched_transcripts_BCN_module[["ALL_transcripts_with_predictedORFs"]]
-
-### gut_module dataset ###
-
-## call the function 
-matched_transcripts_gut_module <- match_transcripts_to_taxonomic_origin(gut_module, list1)
-
-## print the output 
-
-for (df_name in names(matched_transcripts_gut_module)) {
-  df <- matched_transcripts_gut_module[[df_name]]
-  cat("Dataset: gut_module \n")
-  cat("Taxonomic level:", df_name, "\n")
-  cat("Number of transcripts:", nrow(df), "\n\n")
-}
-
-## save the transcript ids for each taxonomic level 
-matched_gut_module_ARTHRO <-matched_transcripts_gut_module[["arthro_only_proteins_removep"]]
-matched_gut_module_OSTRA <-matched_transcripts_gut_module[["ostra_only_proteins_removep"]]
-matched_gut_module_LUM <- matched_transcripts_gut_module[["lum_only_proteins_removep"]]
-matched_gut_module_LUX <-matched_transcripts_gut_module[["lux_only_proteins_removep"]]
-matched_gut_module_VTSUJII <-matched_transcripts_gut_module[["Vargula_tsujii_cdhit_95_proteins_removep"]]
-matched_gut_module_ALL_transcripts_with_predictedORFs <-matched_transcripts_gut_module[["ALL_transcripts_with_predictedORFs"]]
 
 ### ALL_DGE_min2counts ###
 
