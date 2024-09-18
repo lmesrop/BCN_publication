@@ -1,6 +1,6 @@
 #Description: Create a blast database for the protein secretory pathway 
 #Author: Lisa Yeter Mesrop 
-#Goal: Use the blast database to find protein secretory pathway genes in the significantly upregulated genes of the bioluminescent upper lip, non-luminous upper lip, and BCN. 
+#Goal: Use the protein secretory pathway blast database to find protein secretory pathway genes in the luminous upper lip, non-luminous upper lip, and BCN. 
 
 #run in R 
 
