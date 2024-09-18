@@ -1,13 +1,13 @@
-#IDX,TAXON,OUT,user_specific,phenotype,luxorina,luminini ,ostracoda,arthropoda 
-0,AltLiz,0,N2,non_bio,other,other,ostra,arthro
-1,BothRoCMU,0,N8,bio,lux,lum,ostra,arthro
-2,Daphnia_magna,0,N0,other ,other,other,other,arthro
-3,Darwinula_stevensoni,0,N2,non_bio,other,other,ostra,arthro
-4,Euph_microasciformis,0,N2,non_bio,other,other,ostra,arthro
-5,Harb_slatteryi,0,N2,non_bio,other,other,ostra,arthro
-6,JaWLU_S67,0,N8,bio,lux,lum,ostra,arthro
-7,Pannecohenae,0,N8,bio,lux,lum,ostra,arthro
-8,Skogsbergia_sp,0,N2,non_bio,other,other,ostra,arthro
-9,Trichonephila_antipodiana,1,N0,other ,other,other,other,arthro
-10,V_hilg,0,N7,bio,other,lum,ostra,arthro
-11,Vargula_tsujii_cdhit_95,0,N8,bio,lux,lum,ostra,arthro
+#IDX,TAXON,OUT,user_specific,luxorina,luminini ,ostracoda,arthropoda 
+0,AltLiz,0,N2,other,other,ostra,arthro
+1,BothRoCMU,0,N8,lux,lum,ostra,arthro
+2,Daphnia_magna,0,N0,other,other,other,arthro
+3,Darwinula_stevensoni,0,N2,other,other,ostra,arthro
+4,Euph_microasciformis,0,N2,other,other,ostra,arthro
+5,Harb_slatteryi,0,N2,other,other,ostra,arthro
+6,JaWLU_S67,0,N8,lux,lum,ostra,arthro
+7,Pannecohenae,0,N8,lux,lum,ostra,arthro
+8,Skogsbergia_sp,0,N2,other,other,ostra,arthro
+9,Trichonephila_antipodiana,1,N0,other,other,other,arthro
+10,V_hilg,0,N7,other,lum,ostra,arthro
+11,Vargula_tsujii_cdhit_95,0,N8,lux,lum,ostra,arthro
