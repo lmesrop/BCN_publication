@@ -91,7 +91,7 @@ vtsujii_skogs_joined_one_to_one_na_omit <- na.omit(vtsujii_skogs_joined_one_to_o
 #remove any duplicated columns from the plyr::join function 
 vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders <- vtsujii_skogs_joined_one_to_one_na_omit %>% dplyr::select(-c(17, 18))
 
-#In some cases, one orthogroup can have multiple one-to-one orthologs if the gene duplication occurred before the divergence of two species. To deal with this, need to generate unique names for orthogroup numbers in column Orthogroup. 
+#In some cases, one orthogroup can have multiple one-to-one orthologs if the gene duplication occurred before the divergence of the two species. To deal with this, we need to generate unique names for orthogroup numbers in column Orthogroup. 
 #convert the Orthogroup column from factor to character 
 vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders <- vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders %>%
   mutate(Orthogroup = as.character(Orthogroup))
