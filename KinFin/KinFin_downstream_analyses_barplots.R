@@ -1,3 +1,5 @@
+#UPDATE#
+
 #Description: Barplots for downstream analyses of KinFin output for Vargula tsujii. 
 #Author: Lisa Yeter Mesrop 
 #Goal: Scripts for barplot figures. 
@@ -65,7 +67,7 @@ data_all_transcripts_barplot +theme(panel.grid.major = element_blank(), panel.gr
 
 
 
-### BCN and Gut Network ###
+### BCN ###
 
 
 group_BCN <- c(rep("BCN", 5), rep("Gut" , 5))
@@ -90,72 +92,5 @@ data_BCN_barplot<- ggplot(data_BCN, aes(fill=factor(origin_of_transcripts_BCN, l
 data_BCN_barplot  +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                          panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
-
-
-### correct for multiple testing ###
-
-
-data <- data.frame(
-  Group = c("Bio_Upper_Lip", "Compound_eye", "Gut", "DGE"),
-  Luminini = c(22, 6, 56, 351),
-  ORFs = c(267, 376, 1529, 11669)
-)
-
-# perform Fisher's exact tests or chi-square tests for pairwise comparisons
-# Bio Upper Lip vs DGE
-if (min(table(data[data$Group == "Bio_Upper_Lip", "Luminini"]), table(data[data$Group == "DGE", "Luminini"])) < 5 ||
-    min(table(data[data$Group == "Bio_Upper_Lip", "ORFs"]), table(data[data$Group == "DGE", "ORFs"])) < 5) {
-  test1 <- fisher.test(matrix(c(data[data$Group == "Bio_Upper_Lip", "Luminini"],
-                                data[data$Group == "Bio_Upper_Lip", "ORFs"],
-                                data[data$Group == "DGE", "Luminini"],
-                                data[data$Group == "DGE", "ORFs"]), nrow = 2))
-} else {
-  test1 <- chisq.test(matrix(c(data[data$Group == "Bio_Upper_Lip", "Luminini"],
-                               data[data$Group == "Bio_Upper_Lip", "ORFs"],
-                               data[data$Group == "DGE", "Luminini"],
-                               data[data$Group == "DGE", "ORFs"]), nrow = 2))
-}
-
-# Compound Eye vs DGE
-if (min(table(data[data$Group == "Compound_eye", "Luminini"]), table(data[data$Group == "DGE", "Luminini"])) < 5 ||
-    min(table(data[data$Group == "Compound_eye", "ORFs"]), table(data[data$Group == "DGE", "ORFs"])) < 5) {
-  test2 <- fisher.test(matrix(c(data[data$Group == "Compound_eye", "Luminini"],
-                                data[data$Group == "Compound_eye", "ORFs"],
-                                data[data$Group == "DGE", "Luminini"],
-                                data[data$Group == "DGE", "ORFs"]), nrow = 2))
-} else {
-  test2 <- chisq.test(matrix(c(data[data$Group == "Compound_eye", "Luminini"],
-                               data[data$Group == "Compound_eye", "ORFs"],
-                               data[data$Group == "DGE", "Luminini"],
-                               data[data$Group == "DGE", "ORFs"]), nrow = 2))
-}
-
-# Gut vs DGE
-if (min(table(data[data$Group == "Gut", "Luminini"]), table(data[data$Group == "DGE", "Luminini"])) < 5 ||
-    min(table(data[data$Group == "Gut", "ORFs"]), table(data[data$Group == "DGE", "ORFs"])) < 5) {
-  test3 <- fisher.test(matrix(c(data[data$Group == "Gut", "Luminini"],
-                                data[data$Group == "Gut", "ORFs"],
-                                data[data$Group == "DGE", "Luminini"],
-                                data[data$Group == "DGE", "ORFs"]), nrow = 2))
-} else {
-  test3 <- chisq.test(matrix(c(data[data$Group == "Gut", "Luminini"],
-                               data[data$Group == "Gut", "ORFs"],
-                               data[data$Group == "DGE", "Luminini"],
-                               data[data$Group == "DGE", "ORFs"]), nrow = 2))
-}
-
-# Correct for multiple testing using Bonferroni correction
-p_values <- c(test1$p.value, test2$p.value, test3$p.value)
-adjusted_p_values <- p.adjust(p_values, method = "bonferroni")
-
-# create a data frame with original and adjusted p-values
-results <- data.frame(
-  Comparison = c("Bio Upper Lip vs DGE", "Compound Eye vs DGE", "Gut vs DGE"),
-  p_value = c(test1$p.value, test2$p.value, test3$p.value),
-  adjusted_p_value = adjusted_p_values
-)
-
-# view the results
-results
 
 
