@@ -1,5 +1,3 @@
-#UPDATE#
-
 #Description: Barplots for downstream analyses of KinFin output for Vargula tsujii. 
 #Author: Lisa Yeter Mesrop 
 #Goal: Scripts for barplot figures. 
@@ -36,7 +34,7 @@ data_DE_barplot<- ggplot(data_DE, aes(fill=factor(origin_of_transcripts_DE, leve
   labs(fill = "Origin of Genes") +
   theme(axis.text = element_text(size = 16)) +
   theme(axis.title = element_text(size = 20))   +
-  theme(legend.text = element_text(size = 16))  +         
+  theme(legend.text = element_text(size = 16))  +           # Legend text
   theme(legend.title = element_text(size = 20))  
 
 data_DE_barplot +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
@@ -65,32 +63,6 @@ data_all_transcripts_barplot <- ggplot(data_all, aes(fill=factor(origin_of_trans
 data_all_transcripts_barplot +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                                     panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
-
-
-### BCN ###
-
-
-group_BCN <- c(rep("BCN", 5), rep("Gut" , 5))
-origin_of_transcripts_BCN <- rep(c("All Arthropods", "Ostracoda", "Luminini","Luxorina","V.tsujii" ) , 2)
-expressed_transcripts_BCN <- c(130, 100, 35, 28, 53, 69, 22, 9, 1, 4) 
-data_BCN <- data.frame(group_BCN,origin_of_transcripts_BCN,expressed_transcripts_BCN)
-
-
-# stacked barplot
-data_BCN_barplot<- ggplot(data_BCN, aes(fill=factor(origin_of_transcripts_BCN, levels = c("All Arthropods", "Ostracoda", "Luminini","Luxorina","V.tsujii" )), y=expressed_transcripts_BCN, x=group_BCN)) + 
-  geom_bar(position="fill", stat="identity", color="black", size=0.80, width = .60) + 
-  scale_fill_manual(values=c('#acacac','#E69F00', '#0072b2','#56B4E9','#CC79A7')) +
-  scale_y_continuous(labels = scales::percent_format()) +
-  labs(y = "Number of Expressed Transcripts", x = "Module") +
-  labs(fill = "Origin of Genes") +
-  theme(axis.text = element_text(size = 16)) +
-  theme(axis.title = element_text(size = 20))   +
-  theme(legend.text = element_text(size = 16))  +   
-  theme(legend.title = element_text(size = 20)) 
-
-
-data_BCN_barplot  +theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-                         panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
 
 
