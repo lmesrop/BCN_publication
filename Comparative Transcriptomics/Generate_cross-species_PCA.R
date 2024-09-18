@@ -1,4 +1,4 @@
-#Description: Generate the cross-species PCA plot for Figure 2 
+#Description: Generate the cross-species PCA plot
 #Author: Lisa Yeter Mesrop 
 #Goal: Take the cross-species expression matrix (i.e. one-to-one orthologs) and filter, log2 transform and remove batch effect caused by multiple species. 
 
