@@ -40,20 +40,8 @@ head(All_one_to_one_orthlogs_vtsujii_skogs)
 
 ##### clean up the df All_one_to_one_orthlogs_vtsujii_skogs #####
 
-#remove extra column
+#remove extra column and clean up 
 All_one_to_one_orthlogs_vtsujii_skogs$X <- NULL
-
-#remove .p1 and .p2 at the end of each transcript ID. TIP: To avoid multiple open reading frames for one transcript from TransDecoder output, use the flag --single_best_orf. 
-
-All_one_to_one_orthlogs_vtsujii_skogs_v1 <- All_one_to_one_orthlogs_vtsujii_skogs %>% separate(Skogsbergia_sp, c("skogs", "extra"), sep ="\\.p") 
-All_one_to_one_orthlogs_vtsujii_skogs_v1$extra <- NULL
-All_one_to_one_orthlogs_vtsujii_skogs_v2 <- All_one_to_one_orthlogs_vtsujii_skogs_v1 %>% separate(Vargula_tsujii_cdhit_95.fasta.transdecoder, c("tsujii", "extra"), sep ="\\.p") 
-All_one_to_one_orthlogs_vtsujii_skogs_v2$extra <- NULL
-All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup <- All_one_to_one_orthlogs_vtsujii_skogs_v2 %>% distinct(skogs, .keep_all = TRUE)
-All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup_rmtsujii_dups <- All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup %>% distinct(tsujii, .keep_all = TRUE)  
-
-#cleaned up df 
-All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup_rmtsujii_dups
 
 ##### read in count matrices for V.tsujii and Skogsbergia sp. datasets (upper lip, compound eye and gut) #####
 
@@ -76,35 +64,34 @@ row.names(vtsujii_up_eye_gut_counts) <- vtsujii_up_eye_gut_counts$X
 
 #keep the X column for downstream analyses 
 
+##### now identify all the one-to-one orthologs present in each expression matrix #####
 
-##### now find all the one-to-one orthologs in each expression matrix #####
+#start with V.tsujii expression matrix 
+vtsujii_one_to_one_ortholog <- subset(vtsujii_up_eye_gut_counts, X %in% All_one_to_one_orthlogs_vtsujii_skogs$tsujii)
 
-#start with V.tsujii 
-vtsujii_one_to_one_ortholog <- subset(vtsujii_up_eye_gut_counts, X %in% All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup_rmtsujii_dups$tsujii)
-
-#change column names 
+#change column name to tsujii 
 colnames(vtsujii_one_to_one_ortholog)[1] <- "tsujii"
 
-#next with Skogsbergia sp. 
-skogs_one_to_one_ortholog <- subset(skogs_up_eye_gut_counts, X %in% All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup_rmtsujii_dups$skogs)
+#next with Skogsbergia sp. expression matrix 
+skogs_one_to_one_ortholog <- subset(skogs_up_eye_gut_counts, X %in% All_one_to_one_orthlogs_vtsujii_skogs$skogs)
 
-#change column names 
+#change column name to skogs
 colnames(skogs_one_to_one_ortholog)[16] <- "skogs"
 
-#add the orthogroup information to each subsetted matrix
-skogs_filtered_join  <- plyr::join(skogs_one_to_one_ortholog , All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup_rmtsujii_dups, by = "skogs", type ="left", match = "all")
-vtsujii_filtered_join  <- plyr::join(vtsujii_one_to_one_ortholog , All_one_to_one_orthlogs_vtsujii_skogs_v2_rmskogsdup_rmtsujii_dups, by = "tsujii", type ="left", match = "all")
+#add the orthogroup number to each subsetted matrix
+skogs_filtered_join  <- plyr::join(skogs_one_to_one_ortholog , All_one_to_one_orthlogs_vtsujii_skogs, by = "skogs", type ="left", match = "all")
+vtsujii_filtered_join  <- plyr::join(vtsujii_one_to_one_ortholog , All_one_to_one_orthlogs_vtsujii_skogs, by = "tsujii", type ="left", match = "all")
 
-#take the largest expression matrix and subset it by the smaller matrix 
+#take the largest expression matrix and subset it by the smaller expression matrix 
 vtsujii_skogs_joined_one_to_one  <- plyr::join(vtsujii_filtered_join ,skogs_filtered_join, by = "tsujii", type ="left", match = "all")
 
-#omit any rows that don't have expression counts in both V.tsujii and Skogsbergia sp. 
+#omit any rows that don't have expression counts in both V.tsujii and Skogsbergia sp. expression matrices
 vtsujii_skogs_joined_one_to_one_na_omit <- na.omit(vtsujii_skogs_joined_one_to_one)
 
-#the plyr::join function generated duplicated columns. Remove the duplicated columns. 
+#remove any duplicated columns from the plyr::join function 
 vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders <- vtsujii_skogs_joined_one_to_one_na_omit %>% dplyr::select(-c(17, 18))
 
-#one orthogroup number can have multiple one-to-one orthologs. Need to generate unique names for orthogroup numbers in column Orthogroup. 
+#In some cases, one orthogroup can have multiple one-to-one orthologs if the gene duplication occurred before the divergence of two species. To deal with this, need to generate unique names for orthogroup numbers in column Orthogroup. 
 #convert the Orthogroup column from factor to character 
 vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders <- vtsujii_skogs_joined_one_to_one_na_omit_cleanheaders %>%
   mutate(Orthogroup = as.character(Orthogroup))
