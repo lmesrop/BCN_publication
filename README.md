@@ -1,6 +1,6 @@
 # Ancient secretory pathways contributed to the evolutionary origin of an ecologically impactful bioluminescence system
 
-Lisa Y. Mesrop*, Gigi Minsky,  Michael S. Drummond, Jessica A. Goodheart, Stephen Proulx, Todd H. Oakley
+Lisa Y. Mesrop*, Geetanjali Minsky,  Michael S. Drummond, Jessica A. Goodheart, Stephen Proulx, Todd H. Oakley
 
 *Corresponding author: Lisa Yeter Mesrop
 
@@ -14,7 +14,7 @@ Evolutionary innovations in chemical secretion – such as the production of sec
 
 Supplementary material that includes code, tables, and figures can be found in the R Juypter Notebook below. 
 
-[Juypter Notebook](#https://lmesrop.github.io/BCN_publication/Jupyter_NB_1/BCN_supp_Luminous_Ostracod_Mesrop_part_1_of_2.html)
+[Juypter Notebook](https://lmesrop.github.io/BCN_publication/Jupyter_NB_1/BCN_supp_Luminous_Ostracod_Mesrop_part_1_of_2.html)
 
 The R Juypter Notebook serves as a comprehensive repository encompassing most of the scripts and figures relevant to the bioluminescent ostracod *V.tsujii* and non-bioluminescent ostracod *Skogsbergia sp.* analyses outlined in the publication. This notebook includes the following analyses: QC steps, WGCNA, Network Visualization, Network Connectivity, Differential Gene Expression, and GO enrichments.
 
