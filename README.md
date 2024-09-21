@@ -12,10 +12,10 @@ Evolutionary innovations in chemical secretion – such as the production of sec
 
 ## Supplementary material R Juypter notebooks 
 
-Supplementary material that includes code, tables, and figures can be found in R Juypter Notebook 1 and Jupyter Notebook 2. 
+Supplementary material that includes code, tables, and figures can be found in the R Juypter Notebook below. 
 
 [Juypter Notebook](#https://lmesrop.github.io/BCN_publication/Jupyter_NB_1/BCN_supp_Luminous_Ostracod_Mesrop_part_1_of_2.html)
-Supp Material for Luminous Ostracod *Vargula tsujii* and non-bioluminescent ostracod *Skogsbergia sp.* 
+Supp Material for the bioluminescent ostracod *Vargula tsujii* and non-bioluminescent ostracod *Skogsbergia sp.* 
 
 The R Juypter Notebook serves as a comprehensive repository encompassing most of the scripts and figures relevant to the bioluminescent ostracod *V.tsujii* and non-bioluminescent ostracod *Skogsbergia sp.* analyses outlined in the publication. This notebook includes the following analyses: QC steps, WGCNA, Network Visualization, Network Connectivity, Differential Gene Expression, and GO enrichments.
 
