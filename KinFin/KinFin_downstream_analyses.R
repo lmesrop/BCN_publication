@@ -12,7 +12,7 @@ lum_only_proteins
 lux_only_proteins
 ostra_only_proteins
 
-## remove .p1 or .p2 
+## clean up dataframes
 Vargula_tsujii_cdhit_95_proteins_removep <- Vargula_tsujii_cdhit_95_proteins %>% separate(V1, c( "transcript_id", "col2"), ".p") %>% select(-c(col2))
 ostra_only_proteins_removep <- ostra_only_proteins %>% separate(V1, c( "transcript_id", "col2"), ".p") %>% select(-c(col2))
 arthro_only_proteins_removep <-  arthro_only_proteins %>% separate(V1, c( "transcript_id", "col2"), ".p") %>% select(-c(col2))
