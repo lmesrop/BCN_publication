@@ -1,0 +1,2 @@
+
+We checked for batch effects between samples from different RNA-seq runs and extraction methods and found that results remained qualitatively consistent across conditions. We checked the batch effect using the empiricalBayesLM from WGCNA. 
