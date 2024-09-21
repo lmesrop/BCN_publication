@@ -1,2 +1,2 @@
 
-We checked for batch effects between samples from different RNA-seq runs and extraction methods and found that results remained qualitatively consistent across conditions. We checked the batch effect using the empiricalBayesLM from WGCNA. 
+We evaluated potential batch effects between samples from different RNA-seq runs and extraction methods and found that the results remained consistent across all conditions. Batch effects were assessed using the empiricalBayesLM function from WGCNA. Notably, over 80% of co-expressed genes were shared between the original and batch-corrected BCN networks.
