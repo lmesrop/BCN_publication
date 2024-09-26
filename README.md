@@ -21,4 +21,6 @@ The R Juypter Notebook serves as a comprehensive repository encompassing most of
 
 ## Supplementary material to other code, tables, and figures can be found in the Github repository. 
 
+https://doi.org/10.5281/zenodo.13841021
+
 
